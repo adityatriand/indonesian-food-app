@@ -42,7 +42,9 @@ class _Profile extends State<Profile>{
                 ),
                 Row(
                   children: [
-                    SizedBox(width: 100),
+                    SizedBox(
+                      width: 30
+                    ),
                     Expanded(
                       flex: 2,
                       child: Column(
@@ -53,7 +55,7 @@ class _Profile extends State<Profile>{
                           Text('No. Matrix'),
                           Text('Hobby')
                         ],
-                      )
+                      ),
                     ),
                     Expanded(
                       flex: 4,
@@ -67,7 +69,6 @@ class _Profile extends State<Profile>{
                           ],
                         )
                     ),
-                    SizedBox(width: 10),
                   ],
                 )
               ]

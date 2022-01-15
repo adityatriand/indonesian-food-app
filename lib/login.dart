@@ -44,7 +44,21 @@ class _LoginPage extends State<LoginPage>{
             backgroundImage: AssetImage("images/image1.jpg"),
             radius: 60,
           ),
-        )
+        ),
+        SizedBox(
+          height: 10.0,
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 10.0),
+        ),
+        Text(
+          'Indonesian Food App',
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.bold
+          ), textAlign: TextAlign.center,
+        ),
       ],
     );
   }
@@ -160,7 +174,8 @@ class _LoginPage extends State<LoginPage>{
             Radius.circular(20)
           ),
           child: Container(
-            width: MediaQuery.of(context).size.height*0.5,
+            height: MediaQuery.of(context).size.height*0.5,
+            width: MediaQuery.of(context).size.height * 0.4,
             decoration: BoxDecoration(
               color: Colors.white,
             ),
@@ -173,8 +188,14 @@ class _LoginPage extends State<LoginPage>{
                   key: _formKey,
                   child: Column(
                     children: [
+                      SizedBox(
+                          height: 20
+                      ),
                       _buildEmail(),
                       _buildPassword(),
+                      SizedBox(
+                          height: 30
+                      ),
                       _buildLogin()
                     ],
                   ),

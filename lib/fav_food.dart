@@ -15,53 +15,58 @@ class Fav_Food extends StatefulWidget{
 }
 
 class _Fav_Food extends State<Fav_Food>{
-  // final notesReference = FirebaseDatabase.instance.reference().child('food');
-  // List<Food> items = [];
-  // late StreamSubscription<Event> _onNoteAddedSubscription;
-  //
-  // @override
-  // void initState(){
-  //   super.initState();
-  //   items = [];
-  //   _onNoteAddedSubscription = notesReference.onChildAdded.listen((_onNoteAdded));
-  // }
-  //
-  // @override
-  // void dispose(){
-  //   _onNoteAddedSubscription.cancel();
-  //   super.dispose();
-  // }
-  //
-  // void _onNoteAdded(Event event){
-  //   items.add(new Food.fromSnapshot(event.snapshot));
-  // }
+  final notesReference = FirebaseDatabase.instance.reference().child('food');
+  List<Food> items = [];
+  late StreamSubscription<Event> _onNoteAddedSubscription;
+
+  @override
+  void initState(){
+    super.initState();
+    items = [];
+    _onNoteAddedSubscription = notesReference.onChildAdded.listen((_onNoteAdded));
+  }
+
+  @override
+  void dispose(){
+    _onNoteAddedSubscription.cancel();
+    super.dispose();
+  }
+
+  void _onNoteAdded(Event event){
+    items.add(new Food.fromSnapshot(event.snapshot));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-            child: Column(
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
                     height: 50,
                   ),
-                  Text('Your Favorite Food', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
+                  Container(
+                    child: Text('Your Favorite Food', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25,)),
+                  ),
                   SizedBox(
                     height: 30,
                   ),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    FoodNew())
-                        );
-                      },
-                      child: Text('Add Fav Food',style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white)),
-                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.amber))
+                  Container(
+                    child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      FoodNew())
+                          );
+                        },
+                        child: Text('Add Fav Food',style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white)),
+                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.amber))
+                    ),
                   ),
                   SizedBox(
                     height: 30,

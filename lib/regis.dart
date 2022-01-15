@@ -73,6 +73,44 @@ class _RegisPage extends State<RegisPage> {
     );
   }
 
+  Widget _buildCancel() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          height: 1.4 * (MediaQuery
+              .of(context)
+              .size
+              .height / 20),
+          width: 5 * (MediaQuery
+              .of(context)
+              .size
+              .width / 10),
+          margin: EdgeInsets.only(bottom: 20),
+          child: RaisedButton(
+            elevation: 5.0,
+            color: Colors.grey,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30)
+            ),
+            onPressed: () {
+              Navigator.pushReplacement(context, MaterialPageRoute(
+                  builder: (BuildContext context) => LoginPage()));
+            },
+            child: Text(
+              'Cancel',
+              style: TextStyle(
+                  color: Colors.white, letterSpacing: 1.5, fontSize: MediaQuery
+                  .of(context)
+                  .size
+                  .height / 40),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
   Widget _buildEmail() {
     return Padding(
       padding: EdgeInsets.all(8),
@@ -145,7 +183,11 @@ class _RegisPage extends State<RegisPage> {
               SizedBox(
                 height: 15.0,
               ),
-              _buildSave()
+              _buildSave(),
+              SizedBox(
+                height: 15.0,
+              ),
+              _buildCancel()
             ],
           ),
         ),
